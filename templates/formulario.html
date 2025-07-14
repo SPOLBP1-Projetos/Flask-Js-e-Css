@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Formulário de Cadastro</h2>
+        <form id="registrationForm" action="{{ url_for('registrarUsuario') }}"
+        method="post" novalidate>
+        <form method="post" class="form">
+            
+            
+            <input type="text" name="username" id="username" placeholder="Seu Nome" required> <br>
+  
+            
+            <input type="password" name="password" id="password" placeholder="Sua Senha" required><br>
+
+            
+            <input type="email" name="email" id="email" placeholder="seuemail@gmail.com" required><br>
+
+          </form> <br>
+        <button type="submit">Cadastrar</button>
+        <p id="mensagemErro"></p>
+        </form>
+
+    </div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
