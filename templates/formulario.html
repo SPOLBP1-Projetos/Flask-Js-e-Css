@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <div class="container-pai">
     <div class="container">
         <h2>Formulário de Cadastro</h2>
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -38,16 +39,31 @@
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
-    <h3>Usuários cadastrados:</h3>
-        {% if usuarios %}
-        <ul>
-            {% for usuario in usuarios %}
-            <li>{{ usuario.username }} - {{ usuario.email }}</li>
+<div class="container">
+    <h2>Usuários cadastrados:</h2>
+    {% if usuarios %}
+    <table>
+        <thead>
+            <tr>
+                <th>Usuário</th>
+                <th>E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in usuarios %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
             {% endfor %}
-        </ul>
-        {% else %}
-        <p>Nenhum usuário cadastrado ainda.</p>
-        {% endif %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhum usuário cadastrado ainda.</p>
+{% endif %}
+</div>
+</div>
+
     
 </body>
 </html>
