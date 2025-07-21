@@ -38,5 +38,16 @@
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
+    <h3>Usuários cadastrados:</h3>
+        {% if usuarios %}
+        <ul>
+            {% for usuario in usuarios %}
+            <li>{{ usuario.username }} - {{ usuario.email }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Nenhum usuário cadastrado ainda.</p>
+        {% endif %}
+    
 </body>
 </html>
