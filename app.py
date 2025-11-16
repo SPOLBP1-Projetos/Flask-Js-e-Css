@@ -35,6 +35,15 @@ def registrarUsuario():
 
     return render_template("formulario.html", usuarios=session.get('usuarios', []))
                            
+@app.route('/removerUsuario/<int:index>', methods=['POST'])
+def removerUsuario(index):
+    if 'usuarios' in session:
+        usuarios = session['usuarios']
+        if 0 <= index < len(usuarios):
+            usuario_removido = usuarios.pop(index)
+            session['usuarios'] = usuarios
+            flash(f"Usuário {usuario_removido['username']} removido com sucesso!", "success")
+    return redirect(url_for('registrarUsuario'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5001)
